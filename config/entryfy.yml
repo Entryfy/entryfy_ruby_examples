@@ -1,0 +1,7 @@
+staging:
+  accountapi: "accountapi.total-access.se:9843"
+  orgapi: "orgapi.total-access.se:9843"
+
+production:
+  accountapi: "accountapi.entryfy.com:9843"
+  orgapi: "orgapi.entryfy.com:9843"
