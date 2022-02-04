@@ -14,7 +14,7 @@ $config = YAML.load(
 
 $credentials = ::GRPC::Core::ChannelCredentials.new
 
-class ::EntryfyExamples < Thor
+class ::EntryfyRubyExamples < Thor
   desc "login", "Login against the Entryfy AccountService"
   def login(username, password, device_uuid = nil)
     begin

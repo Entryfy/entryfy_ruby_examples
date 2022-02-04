@@ -16,12 +16,12 @@ Commands to showcase interaction with the Entryfy AccountService and responses.
 
 #### To login against the Entryfy Service
 
-``docker compose run -e ENTRYFY_ENV=staging entryfy_examples.ruby.client thor entryfy_examples:login 'username' 'password' 'device_uuid'``
+``docker compose run -e ENTRYFY_ENV=staging entryfy_ruby_examples.client thor entryfy_ruby_examples:login 'username' 'password' 'device_uuid'``
 
 #### To logut from the Entryfy AccountService
 
-``docker compose run -e ENTRYFY_ENV=staging entryfy_examples.ruby.client thor entryfy_examples:logout 'auth_token'``
+``docker compose run -e ENTRYFY_ENV=staging entryfy_ruby_examples.client thor entryfy_ruby_examples:logout 'auth_token'``
 
 #### To reissue auth_token from the Entryfy AccountService
 
-``docker compose run -e ENTRYFY_ENV=staging entryfy_examples.ruby.client thor entryfy_examples:reissue 'reissue_token'``
+``docker compose run -e ENTRYFY_ENV=staging entryfy_ruby_examples.client thor entryfy_ruby_examples:reissue 'reissue_token'``
