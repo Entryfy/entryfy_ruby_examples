@@ -1,0 +1,6 @@
+version: '3'
+services:
+  entryfy_examples.ruby.client:
+    build: .
+    volumes:
+      - .:/app
