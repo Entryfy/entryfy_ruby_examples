@@ -7,6 +7,7 @@ require 'thor'
 require 'yaml'
 
 require('./vendor/entryfy/account/api/v1/sessions_service_services_pb.rb')
+require('./vendor/entryfy/org/user/api/v1/doors_service_services_pb.rb')
 
 $config = YAML.load(
   File.open('config/entryfy.yml').read
@@ -66,6 +67,26 @@ module ::Entryfy
         puts ::JSON.pretty_generate(::JSON.parse(e.debug_error_string))
       rescue ArgumentError => e
        puts "#{e.message} #{e.backtrace.join("\n")}"
+      end
+    end
+  end
+  class OrgService < Thor
+    desc "RemoteOpen", "Open a door remotely through the API"
+    def remote_open(auth_token, org_slug, door_uuid)
+      begin
+        metadata = { metadata: { authorization: "Bearer #{auth_token}" } }
+
+        door_stub = ::Entryfy::Org::User::Api::V1::DoorsService::Stub.new($config[ENV['ENTRYFY_ENV']]['orgapi'], $credentials)
+
+        remote_open_request = ::Entryfy::Org::User::Api::V1::RemoteOpenRequest.new(organization_slug: org_slug, door_uuid: door_uuid)
+
+        response = door_stub.remote_open(remote_open_request, metadata)
+
+        puts ::JSON.pretty_generate(::JSON.parse(response.to_json))
+      rescue GRPC::Unavailable, GRPC::PermissionDenied, GRPC::InvalidArgument => e
+        puts ::JSON.pretty_generate(::JSON.parse(e.debug_error_string))
+      rescue ArgumentError => e
+        puts "#{e.message} #{e.backtrace.join("\n")}"
       end
     end
   end

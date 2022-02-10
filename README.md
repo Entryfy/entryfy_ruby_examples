@@ -25,3 +25,11 @@ Commands to showcase interaction with the Entryfy AccountService and responses.
 #### To reissue auth_token from the Entryfy AccountService
 
 ``docker compose run -e ENTRYFY_ENV=staging entryfy_ruby_examples.client thor entryfy:account_service:reissue 'reissue_token'``
+
+### Entryfy OrgService
+
+Commands to showcase interaction with the Entryfy OrgService and responses.
+
+#### To remotely open a door in Entryfy
+
+``docker compose run -e ENTRYFY_ENV=staging entryfy_ruby_examples.client thor entryfy_ruby_examples:reissue 'auth_token' 'org_slug' 'door_uuid'``
